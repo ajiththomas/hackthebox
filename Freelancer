@@ -52,5 +52,9 @@ HOP RTT       ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 60.24 seconds
 
-(2)
+(2) Port 80 is found to be open, launch http://10.129.101.56 using browser. Upon launching found that IP address redirects to domain freelancer.htb
+(3) So, we have to add this domain to /etc/hosts file using the command echo "10.129.101.56 freelancer.htb" | sudo tee -a /etc/hosts
+
+
+
 
