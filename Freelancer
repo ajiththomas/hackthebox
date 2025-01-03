@@ -1,5 +1,5 @@
-
-Sample Python script to read a QR code image and extract the URL from it using the qrcode library and Pillow for image handling:
+==========(1)======================================================================================================================
+#Sample Python script to read a QR code image and extract the URL from it using the qrcode library and Pillow for image handling:
 
 from PIL import Image
 import qrcode
@@ -49,3 +49,6 @@ pip install opencv-python-headless Pillow
 
 Usage
 Replace path_to_qr_code_image.png with the actual path to your QR code image and run the script. If the image contains a QR code with a URL, it will print the extracted URL.
+==========(2)======================================================================================================================
+#Linux command to generate numbers from 1 to 65535 and redirect them to a file
+seq 1 65535 > numbers.txt
