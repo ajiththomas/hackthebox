@@ -52,3 +52,6 @@ Replace path_to_qr_code_image.png with the actual path to your QR code image and
 ==========(2)======================================================================================================================
 #Linux command to generate numbers from 1 to 65535 and redirect them to a file
 seq 1 65535 > numbers.txt
+==========(3)======================================================================================================================
+ffuf -u 'http://freelancer.htb/accounts/profile/visit/FUZZ/' -X GET -H 'Cookie: sessionid=4p6yyd6c1zosaiuqzfvm3xuu9nr8k08g;csrftoken=uClh0dyORb2wtB2zqDYdxc6YZuGftsE5' -w /home/mabali/numbers.txt -v
+
