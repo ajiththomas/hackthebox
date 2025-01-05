@@ -59,7 +59,8 @@ gci -path . -recurse -ea SilentlyContinue -Include *.txt, *.ini, *.yml, *.xml, *
 get-aduser -filter * | select samaccountname
   (a) get-aduser -filter * -properties DisplayName, EmailAddress | select samaccountname, DisplayName, EmailAddress
   (b) get-aduser -filter "Name -like '*John*'" | select samaccountname
-  (c) get-aduser -filter * | select samaccountname | Export-Csv -Path "ADUsers.csv" -NoTypeInformation
+  (c) Get-ADUser -Identity <samaccountname> -Properties *
+  (d) get-aduser -filter * | select samaccountname | Export-Csv -Path "ADUsers.csv" -NoTypeInformation
 
 ==========(8)======================================================================================================================
 See https://github.com/ajiththomas/passwordspray/blob/main/spray.c
