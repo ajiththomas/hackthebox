@@ -86,6 +86,7 @@ get-filehash -algorithm md5 MEMORY.7z
 ==========(11)======================================================================================================================sudo apt update
 sudo apt update && sudo apt upgrade
 sudo apt install cmake g++ libfuse3-dev
+git clone https://github.com/ufrisk/MemProcFS.git
 cd MemProcFS
 mkdir build && cd build
 cmake ..
