@@ -99,3 +99,6 @@ python3 vol.py -f ~/MEMORY.DMP windows.cmdline.CmdLine
 ==========(13)======================================================================================================================
 //Inspect the interesting
 python3 vol.py -f ~/MEMORY.DMP windows.dumpfiles.DumpFiles --pid 3848
+==========(14)======================================================================================================================
+//dump hashes
+python3 vol.py -f ~/MEMORY.DMP windows.hashdump.Hashdump
