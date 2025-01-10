@@ -116,3 +116,5 @@ python3 vol.py -f ~/MEMORY.DMP windows.lsadump.Lsadump
 python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\REGISTRY\MACHINE\SYSTEM' --dump 
 python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SECURITY' --dump  
 python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SAM' --dump
+==========(18)======================================================================================================================
+secretsdump.py -sam registry.SAM.0xd3067d935000.hive -security registry.SECURITY.0xd3067d7f0000.hive -system registry.SYSTEM.0xd30679c46000.hive LOCAL
