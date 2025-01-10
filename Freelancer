@@ -102,3 +102,9 @@ python3 vol.py -f ~/MEMORY.DMP windows.dumpfiles.DumpFiles --pid 3848
 ==========(14)======================================================================================================================
 //dump hashes
 python3 vol.py -f ~/MEMORY.DMP windows.hashdump.Hashdump
+==========(15)======================================================================================================================
+//dump caches
+python3 vol.py -f ~/MEMORY.DMP windows.cachedump.Cachedump
+==========(16)======================================================================================================================
+//Local Security Authority(LSA) dump
+python3 vol.py -f ~/MEMORY.DMP windows.lsadump.Lsadump
