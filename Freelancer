@@ -92,3 +92,7 @@ cd volatility3/
 python3 -m venv venv && . venv/bin/activate
 pip install -e .[dev]
 ==========(12)======================================================================================================================
+//To extract a .7z archive to the current directory without preserving directory structure
+7z e MEMORY.7z
+cd volatility3/
+python3 vol.py -f ~/MEMORY.DMP windows.cmdline.CmdLine
