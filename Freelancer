@@ -108,3 +108,11 @@ python3 vol.py -f ~/MEMORY.DMP windows.cachedump.Cachedump
 ==========(16)======================================================================================================================
 //Local Security Authority(LSA) dump
 python3 vol.py -f ~/MEMORY.DMP windows.lsadump.Lsadump
+
+==========(17)======================================================================================================================
+//windows.registry.hivelist: This is a Volatility plugin (or command) that lists all the registry hives found in the memory dump. Registry hives contain critical information about system settings, user settings, installed software, and much more in the Windows operating system. The plugin will try to identify all registry hives loaded into memory, such as SYSTEM, SOFTWARE, SECURITY, etc.
+//--filter '\REGISTRY\MACHINE\SYSTEM': This option applies a filter to limit the output to a specific registry hive. In this case, it filters the results to show only the hive located at \REGISTRY\MACHINE\SYSTEM, which is the SYSTEM hive. The SYSTEM hive contains information about the hardware, services, and system configuration.
+//--dump: This option tells Volatility to dump the contents of the selected registry hive (in this case, the SYSTEM hive). By default, this would output the data in a human-readable format. This is useful for examining the contents of a specific registry hive.
+python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\REGISTRY\MACHINE\SYSTEM' --dump 
+python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SECURITY' --dump  
+python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SAM' --dump
