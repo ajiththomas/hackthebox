@@ -153,6 +153,8 @@ get-adobject -filter 'isdeleted -eq $true' -includedeletedobjects
 get-adobject -filter 'isdeleted -eq $true -and ObjectClass -eq "user"' -includedeletedobjects -property *
 restore-adobject -identity ebe15df5-e265-45ec-b7fc-359877217138
 restore-adobject -identity ebe15df5-e265-45ec-b7fc-359877217138 -newname liza.kazanof.new
+//https://learn.microsoft.com/en-us/powershell/module/activedirectory/restore-adobject?view=windowsserver2022-ps
+
 
 get-aduser -filter * | select samaccountname
 get-aduser -filter 'SamAccountName -eq "liza.kazanof"'
