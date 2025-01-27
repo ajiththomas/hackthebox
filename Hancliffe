@@ -69,6 +69,18 @@ Get-NetTCPConnection | Where-Object { $_.State -eq "Listen" }
 */
 
 netstat -nat | findstr "LISTEN"
+==========(8)======================================================================================================================
+
+reg query 'HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths'  
+
+/*
+HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths
+HKLM: Refers to the "HKEY_LOCAL_MACHINE" hive, which contains configuration information specific to the computer (not user-specific).
+Windows Defender\Exclusions\Paths: This registry key lists file paths excluded from Windows Defender’s real-time scanning. 
+Anything listed here will not be monitored for malicious activity by Defender.
+*/
+==========(9)======================================================================================================================
+
 
 /* compile chisel
 git clone https://github.com/jpillora/chisel.git
