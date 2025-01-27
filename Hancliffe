@@ -72,6 +72,8 @@ netstat -nat | findstr "LISTEN"
 ==========(8)======================================================================================================================
 
 reg query 'HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths'  
+dir 'C:\Program Files (x86)'
+
 
 /*
 HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths
@@ -80,7 +82,19 @@ Windows Defender\Exclusions\Paths: This registry key lists file paths excluded f
 Anything listed here will not be monitored for malicious activity by Defender.
 */
 ==========(9)======================================================================================================================
+uname -a
+cat /etc/os-release
+/*
+x86_64: 64-bit architecture (amd64)
+i386 or i686: 32-bit architecture (386)
+armv7l: ARM 32-bit
+aarch64: ARM 64-bit
+*/
 
+echo %PROCESSOR_ARCHITECTURE%
+//systeminfo | findstr /B /C:"System Type"
+/powershell -> Get-ComputerInfo | Select-Object CsSystemType
+==========(10)======================================================================================================================
 
 /* compile chisel
 git clone https://github.com/jpillora/chisel.git
